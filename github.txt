@@ -1,0 +1,54 @@
+1. github repository 생성 -> 원격 repository 생성한거임
+git init 해서 만든건 로컬 repository임
+
+2. master 브랜치 브랜치명 변경
+git branch -M main -> main으로 이름 변경하기
+
+3. 원격 repository에 push하기
+git push -u 원격repo주소 main -> -u 플래그는 해당 주소 기억해두는 옵션
+
+4. 원격 repo주소 변수명으로 저장하기
+git remote add 변수명 원격repo주소
+* 목록 보려면 git remote -v
+
+5. 원격 repository 내려받기
+git clone 원격repo주소
+
+6. .gitignore파일 생성
+.gitignore파일에 명시한 파일은 스테이징 시 제외됨
+
+7. 원격저장소 브랜치 내용 전부 반영
+git pull 원격repo주소 -> 해당 원격저장소 모든 브랜치 내용을 가져와서 로컬저장소에 합침
+* 사실상 git fetch + git merge이기 때문에 2명 이상 같은 파일 건드리면 git pull 시 conflict 발생 가능
+
+8. 로컬 브랜치를 원격저장소에 올리기
+git push 원격repo주소 로컬브랜치
+
+9. pull request
+협업 시 바로 merge하지 않고 github 상에서 pull request로 협의 후 merge
+
+10. branch 전략
+ - git flow
+    1. main
+    2. develop - 개발용 브랜치
+    3. feature - develop 브랜치에 기능 추
+    4. hotfix - main 브랜치 버그 수정
+    5. release - develop을 main에 합치기 전 테스트용
+    -> experimental한 서비스 개발애 적합
+
+ - trunk-based
+    main/feature로만 나눠서 운용
+    -> CI/CD에 적합
+
+11. 변경사항 임시저장
+git stash
+git stash save "메모할 내용" -> 메모와 함께 stash
+git stash list -> 현재 stash한 목록 전부 출력
+git stash pop -> stash한 내용 불러오 (최근것부터, stack자료구조 느낌)
+
+git stash drop 삭제할id -> 특정 stash 삭제
+git stash clear -> 모든 stash 삭제
+
+git stash -p 파일 하나씩 훑으면서 stash 여부 결정
+
+
