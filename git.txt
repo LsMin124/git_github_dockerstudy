@@ -73,4 +73,3 @@ git merge 브랜치명 -> 일단 main으로 이동 후, 특정 브랜치 merge�
  git reset --soft / --hard / --mixed 커밋id
  -> hard시 해당 커밋 이후 커밋 전부 삭제, soft시 해당 커밋을 staging area로 회, mixed시 해당 커밋이 unstaged 상태
 
- 
