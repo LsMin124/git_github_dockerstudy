@@ -1,0 +1,76 @@
+1. 깃 버전 확인
+git --version
+
+2. 깃 global 사용자 정보 설정
+git config --global user.email "abc@gmail.com"
+git config --global user.name "abc"
+
+3. 깃 스테이징 & 커밋
+git add 파일1
+git add 파일1 파일2
+git add . -> 작업 디렉토리 내 모든 파일 스테이징
+git commit -m "메시지" ->  요건 -m 안하고 vim에서 작성하고 커밋할수도 있음
+
+4. 현재 깃 상태 확인
+git status -> 현재 브랜치, 스테이징 및 커밋상황, untracked files 등 확인 가능
+
+5. 스테이징 취소하기
+git restore --staged 파일명
+
+6. 커밋 로그 확인하기
+git log
+
+7. 현재 파일과 과거 커밋 비교
+git diff 커밋id -> git log하면 뜨는 노란 해시 키값이 커밋id. 앞에 몇자리만 떼어 써도 안겹치면 사용 가능
+git diff 커밋id1 커밋id2 -> 두 커밋 비교.
+git difftool -> 현재 파일과 최근 커밋 간 비교
+git difftool 커밋id -> 현재 파일과 특정 커밋 간 비교
+
+8. 브랜치 생성
+git branch 브랜치명
+
+9. 브랜치 간 이동
+git switch 브랜치명 -> 최신 명령어
+git checkout 브랜치명 -> 이거도 됨 근데 checkout 용처가 너무 많아 새로 switch만듬.
+
+10. 한눈에 브랜치와 커밋내역 확인하기
+git log --graph --oneline --all -> 브랜치 구조를 시각적으로 보여줌
+
+11. main에 브랜치 머지하기
+git switch main
+git merge 브랜치명 -> 일단 main으로 이동 후, 특정 브랜치 merge하기
+* conflict 발생 시 잘 수정해서 커밋
+
+12. merge의 여러가지 방법
+ - 3-way-merge -> 두 브랜치 모두 신규 커밋 있을 경우 새로운 커밋 생성해서 머지함
+ - fast-forward merge -> 새로운 브랜치에만 신규 커밋 있을 경우 신규 브랜치를 그냥 기존 브랜치에 포함
+ - rebase and merge -> 브랜치의 시작점을 다른 커밋으로 옮주기, 일종의 강제 fast-forward merge임
+ - squash and merge -> 새 브랜치에 있던 변경사항들이 main 브랜치의 신규 커밋이 됨
+
+ 13. 브랜치 삭제하기
+ git branch -d 브랜치명
+ git branch -D 브랜치명 -> 머지 안된거 삭제하려면 이거 쓰세요
+
+ 14. rebase and merge하는법
+ git switch 새브랜치
+ git rebase main
+
+ git switch main
+ git merge 새브랜치
+
+ 15. squash 하는법
+ git merge --squash 브랜치명 -> --squash 옵션만 추가해주면 됨
+ git commit -m "메시지"
+
+ 16. 최근 커밋 상태로 파일 되돌리기
+ git restore 파일명
+ git restore --source 커밋id 파일명 -> 특정 파일을 특정 커밋id 시점으로 복구
+
+ 17. 과거 커밋 취소
+ git revert 커밋id -> 정확히는 과거 특정 커밋에서 일어난 일을 전부 취소하고, 취소했다는 커밋을 새로 만들어줌
+
+ 18. 커밋 리셋하기
+ git reset --soft / --hard / --mixed 커밋id
+ -> hard시 해당 커밋 이후 커밋 전부 삭제, soft시 해당 커밋을 staging area로 회, mixed시 해당 커밋이 unstaged 상태
+
+ 
